@@ -32,6 +32,22 @@ Tables: transactions, customers, products, markets, date
 
 Record volumes: ~150k transaction rows; customers ~38
 
+Note on data:
+The original database (db_dump.sql) used in this project cannot be shared publicly due to copyright restrictions.
+To replicate this project, you can connect Power BI to any sales transactions dataset with the following tables and fields:
+
+transactions: transaction_id, order_date, market_code, product_code, customer_code, sales_amount, sales_qty, currency
+
+customers: customer_code, customer_name
+
+products: product_code, product_name, variant
+
+markets: market_code, market_name, zone
+
+date: date, month_name, year, etc.
+
+As long as the schema is similar, the cleaning steps, star schema model, and dashboard design in this repo can be reproduced.
+
 # Data Model (Star Schema)
 
 Fact: transactions
@@ -85,7 +101,7 @@ Slicers: Year, Market, Product for quick filtering.
 
 Install MySQL & Workbench.
 
-Import the provided dump (db_dump.sql) via Server → Data Import.
+Import db_dump.sql via Server → Data Import.
 
 Confirm tables exist in a schema named sales.
 
@@ -103,7 +119,6 @@ Build visuals & measures, then save as sales_insights.pbix.
 
 # Example SQL Query (Monthly Revenue Check)
 
--- Total sales amount for January 2020
 SELECT 
     SUM(t.sales_amount) AS jan_revenue
 FROM sales.transactions t
