@@ -1,8 +1,8 @@
-sales-insights-powerbi-sql
+# sales-insights-powerbi-sql
 
 End-to-end portfolio project: SQL exploration ➜ data cleaning (Power Query) ➜ data model (star schema) ➜ interactive Power BI dashboard.
 
-Overview
+# Overview
 
 This project simulates a real-world sales analytics engagement for a computer hardware supplier. I built a repeatable pipeline and an interactive dashboard to help leadership answer:
 
@@ -14,7 +14,7 @@ Where are sales declining and where should we focus?
 
 Stack: Power BI Desktop, MySQL, SQL Workbench, Power Query (M), DAX.
 
-Project Planning — AIMS Grid
+# Project Planning — AIMS Grid
 
 Purpose: Build a single source of truth for sales, reduce ad-hoc Excel work, and enable data-driven decisions.
 
@@ -24,7 +24,7 @@ End Result: A Power BI dashboard with drill-downs for year, market, product, and
 
 Success Criteria: Lower manual reporting time/cost, accurate and timely KPIs, and measurable uplift in sales after adoption.
 
-Data Sources
+# Data Sources
 
 Database: sales (MySQL)
 
@@ -32,7 +32,7 @@ Tables: transactions, customers, products, markets, date
 
 Record volumes: ~150k transaction rows; customers ~38
 
-Data Model (Star Schema)
+# Data Model (Star Schema)
 
 Fact: transactions
 
@@ -48,7 +48,7 @@ date (order_date → date.date)
 
 Relationships are one-to-many from each dimension into the fact table.
 
-Data Cleaning & Transformation (Power Query)
+# Data Cleaning & Transformation (Power Query)
 
 Key steps performed in Transform data (Power Query):
 
@@ -66,7 +66,7 @@ Revenue = SUM( transactions[normalized_sales_amount] )
 
 Sales Quantity = SUM( transactions[sales_qty] )
 
-Dashboard Highlights
+# Dashboard Highlights
 
 KPI cards: Total Revenue, Total Quantity.
 
@@ -78,8 +78,8 @@ Top-N visuals: Top 5 Customers and Top 5 Products by revenue.
 
 Slicers: Year, Market, Product for quick filtering.
 
-Reproducibility — How to Run
-🔹 MySQL
+# Reproducibility — How to Run
+1) MySQL
 
 Install MySQL & Workbench.
 
@@ -87,7 +87,7 @@ Import the provided dump (db_dump.sql) via Server → Data Import.
 
 Confirm tables exist in a schema named sales.
 
-🔹 Power BI Desktop
+2) Power BI Desktop
 
 Get Data → MySQL. Server: localhost (or your host). Database: sales.
 
@@ -99,7 +99,8 @@ Build visuals & measures, then save as sales_insights.pbix.
 
 (Optional) Lighter template: File → Export → Power BI template (.pbit).
 
-Example SQL Query (Monthly Revenue Check)
+# Example SQL Query (Monthly Revenue Check)
+
 -- Total sales amount for January 2020
 SELECT 
     SUM(t.sales_amount) AS jan_revenue
