@@ -66,6 +66,8 @@ Revenue = SUM( transactions[normalized_sales_amount] )
 
 Sales Quantity = SUM( transactions[sales_qty] )
 
+Handle missing product codes: Some transactions did not have a valid product_code. In the dashboard, these appear as (Blank) under Top Products. I intentionally left them unmodified to reflect real-world data quality issues. In a production setting, I would replace them with "Unknown Product" or fix the source data.
+
 # Dashboard Highlights
 
 KPI cards: Total Revenue, Total Quantity.
